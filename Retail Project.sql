@@ -1,3 +1,5 @@
+--PART ONE: CLEANING DATA--
+
 -- CREATE A NEW TABLE TO ACCOMODATE the clean DATA
 
 SELECT TOP 0 *
@@ -87,8 +89,8 @@ InvoiceNo = TRIM(InvoiceNo),
 
 -- Add new columns
 ALTER TABLE Retail_New
-ADD DatePart DATE,
-    TimePart TIME;
+ADD InvoiceDate DATE,
+    InvoiceTime TIME;
 
 -- Update the new columns with the extracted values
 UPDATE Retail_New
@@ -181,6 +183,8 @@ Quantity <0
 UPDATE Retail_New
 SET UnitPrice= ROUND(UnitPrice, 2);
 
+
+--PART ONE: SOLVING THE QUESTIONS--
 
 --QUESTION ONE (What is the distribution of order values across all customers in the dataset?) --
 
