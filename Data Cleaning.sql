@@ -1,4 +1,6 @@
--- CREATE A NEW TABLE TO ACCOMODATE OUR NEW DATA
+
+
+-- CREATE A NEW TABLE TO ACCOMODATE the clean DATA
 
 SELECT TOP 0 *
 INTO Retail_New
@@ -6,14 +8,14 @@ FROM Retail;
 
 sELECT * FROM Retail;
 
---INSERT THE OLD DATA INTO NEW TABLE FOR CLEANING --
+--STEP:1 INSERT THE OLD DATA INTO NEW TABLE FOR CLEANING --
 
 INSERT Retail_New
 SELECT * FROM Retail;
 
 sELECT * FROM Retail_New;
 
----CHECKING FOR DUPLICATES--
+---STEP 2: CHECKING FOR DUPLICATES--
 
 SELECT
     *,
@@ -69,7 +71,7 @@ WHERE Row_Num >1
 
 
 
--- STANDARDIZING DATA (data type with text)--
+-- STEP 3: STANDARDIZING DATA (data type with text)--
 Select * from Retail_New;
 
 select distinct StockCode from Retail_New order by 1;
@@ -102,7 +104,7 @@ ALTER TABLE Retail_New
 DROP COLUMN InvoiceDate;
 
 
--- Cleaning for Nulls or empty
+-- STEP: 4 Cleaning for Nulls or empty
 Select * from Retail_New;
 
 
@@ -165,3 +167,18 @@ Select *
 from Retail_New
 where InvoiceDate = ' '
 OR InvoiceDate IS NULL
+
+
+--Converting some rows with negative value to positive--
+UPDATE Retail_New
+SET Quantity = ABS(Quantity);
+
+Select 
+*
+from Retail_New 
+where 
+Quantity <0
+
+---Rounding the Unit price to 2 decimal--
+UPDATE Retail_New
+SET UnitPrice= ROUND(UnitPrice, 2);
