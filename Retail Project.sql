@@ -184,32 +184,9 @@ UPDATE Retail_New
 SET UnitPrice= ROUND(UnitPrice, 2);
 
 
---PART ONE: SOLVING THE QUESTIONS--
+--PART TWO: SOLVING THE QUESTIONS--
 
 --QUESTION ONE (What is the distribution of order values across all customers in the dataset?) --
-
-WITH CTE AS (
-    SELECT 
-        CustomerID,
-        SUM(Quantity * UnitPrice) AS TotalOrderValue
-    FROM 
-        Retail_New
-    GROUP BY 
-        CustomerID
-)
-SELECT *,
-    CASE 
-        WHEN TotalOrderValue < 500 THEN 'Very Low'
-        WHEN TotalOrderValue BETWEEN 500 AND 999 THEN 'Low'
-        WHEN TotalOrderValue BETWEEN 1000 AND 4999 THEN 'Medium'
-        WHEN TotalOrderValue BETWEEN 5000 AND 9999 THEN 'High'
-        ELSE 'Very High'
-    END AS OrderValueCategory
-FROM CTE
-ORDER BY CustomerID;
-
-
---OPTION 2--
 
 WITH CTE AS (
     SELECT 
@@ -258,27 +235,6 @@ ORDER BY CustomerID
 
 -- QUESTION THREE (Which customers have only made a single purchase from the company?) --
 
-WITH CustomerPurchaseCount AS (
-    SELECT 
-        CustomerID,
-        COUNT(*) AS PurchaseCount
-    FROM 
-        Retail_New
-    GROUP BY 
-        CustomerID
-)
-SELECT 
-    *
-FROM 
-    Retail_New
-JOIN 
-    CustomerPurchaseCount ON Retail_New.CustomerID = CustomerPurchaseCount.CustomerID
-WHERE 
-    CustomerPurchaseCount.PurchaseCount = 1;
-
-
-
-	--OPTION TWO--
 WITH CustomerPurchaseCount AS (
     SELECT 
         CustomerID,
