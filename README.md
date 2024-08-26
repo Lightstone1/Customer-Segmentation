@@ -1,11 +1,11 @@
 # Customer Segmentation 
 ## Table of Content
 - [Understanding Customer Segmentation](#understanding-customer-segmentation)
-- Why I Carried Out Data Analysis on Segmentation
-- Project Objective
-- Understanding Dataset
-- Process of Analysis
-- Insights I discovered
+- [Why I Carried Out Data Analysis on Segmentation](#why-i-carried-out-data-analysis-on-segmentation)
+- [Project Objective](#project-objective)
+- [Understanding Dataset](#understanding-dataset)
+- [Process of Analysis](#process-of-analysis)
+- [Insights I discovered](#insights-i-discovered)
 
 ### Project Overview
 This project focuses on conducting a data analysis to identify and categorize different customer segments. Through this analysis, we aim to uncover valuable insights that will inform targeted marketing strategies and enhance customer engagement. The outcome of this segmentation will enable more personalized approaches, ultimately driving business growth and improving customer satisfaction.
